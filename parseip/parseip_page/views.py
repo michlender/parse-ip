@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def parseip_page(request):
+    return render(request, 'parseip_page/parseip_page.html', {})
