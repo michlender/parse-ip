@@ -1,0 +1,14 @@
+docs/build
+parseip/static
+parseip/config/settings/secrets.json
+
+datadump
+
+.DS_Store*
+*.pyc
+__pycache__
+*bak*
+*/migrations/*
+
+logs
+tmp
