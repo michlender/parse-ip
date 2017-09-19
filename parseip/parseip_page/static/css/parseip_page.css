@@ -1,0 +1,23 @@
+h1 {
+  padding: 30px;
+  background: #1111;
+}
+
+p {
+  padding: 30px;
+}
+
+textarea {
+  margin: 20px;
+  padding: 5px;
+  width: 50%;
+  height: 300px;
+}
+
+div {
+  margin: 20px;
+  padding: 30px;
+}
+
+button {
+}
