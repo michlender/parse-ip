@@ -8,15 +8,10 @@ p {
 }
 
 textarea {
-  margin: 20px;
+  margin: 30px;
   padding: 5px;
   width: 50%;
   height: 300px;
-}
-
-div {
-  margin: 20px;
-  padding: 30px;
 }
 
 button {
