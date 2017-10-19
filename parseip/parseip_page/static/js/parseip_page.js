@@ -5,9 +5,9 @@
 
 var handleClick = function() {
   var input = $( 'input' );
-  var request = $.post(url="/ajax/parseip_page/", format="json", data=input);
+  var request = $.post(url="/ajax/parse/", format="json", data=input);
   request.done(function(data) {
-    $( '<textarea id="returnedParse">data</textarea>' );
+    $( '<textarea id="returnedParse">' + data + '</textarea>' );
   });
 }
 
