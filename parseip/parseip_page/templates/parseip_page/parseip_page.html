@@ -22,7 +22,8 @@
       var input = $( 'input' );
       var request = $.post(url="/ajax/parse/", format="json", data=input);
       request.done(function(data) {
-        $( 'returnedParse' ).val(data);
+        console.log(data);
+        $( '#returnedParse' ).val(data);
       });
     }
 
