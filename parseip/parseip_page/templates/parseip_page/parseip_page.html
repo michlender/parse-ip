@@ -14,6 +14,7 @@
 
     <textarea></textarea>
     <button>Translate</button>
+    <textarea id="returnedParse"></textarea>
 
   </body>
   <script>
@@ -21,7 +22,7 @@
       var input = $( 'input' );
       var request = $.post(url="/ajax/parse/", format="json", data=input);
       request.done(function(data) {
-        $( '<textarea id="returnedParse">' + data + '</textarea>' );
+        $( 'returnedParse' ).val(data);
       });
     }
 

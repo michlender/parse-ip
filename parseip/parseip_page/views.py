@@ -9,5 +9,5 @@ def parse(request):
     # may have to convert request from json to dict? check
     # process (don't worry about this yet)
     # convert result back to json (this you will have to do, Django has machinery to handle returning json?)
-    displayParse = "<textarea id=\"returnedPares\">" + data + "</textarea>"
-    return HttpResponse(displayParse)
+    parsedIPs = "done"
+    return HttpResponse(parsedIPs)
