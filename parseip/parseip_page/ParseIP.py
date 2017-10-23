@@ -1,12 +1,13 @@
 import sys
 
-def parse_IP(myString, delimiter='tofrom'):
+def parse_ip(myString, delimiter='tofrom'):
 	if delimiter == 'tofrom':
 		return tofrom(myString)
 	else:
 		return symbol(myString, delimiter)
 
 def tofrom(myString):
+	# todo: check for empty string
 	myList = myString.split()
 	toReturn = ''
 	inRange = False
@@ -31,11 +32,11 @@ def symbol(myString, symbol):
 	myList = myString.split()
 	toReturn = ''
 	for idx, iP in enumerate(myList):
-		print "index is " + str(idx)
+		print("index is " + str(idx))
 		if validateIP(iP):
-			print "made it into the first if " + str(idx) + " " + str(len(myList))
+			print("made it into the first if " + str(idx) + " " + str(len(myList)))
 			if idx + 1 < len(myList):
-				print "made it into the second if " + str(idx)
+				print("made it into the second if " + str(idx))
 				if myList[idx + 1] == symbol:
 					toReturn += iP + '-'
 				else:
@@ -82,6 +83,3 @@ def validateIP(ip):
 		if i < 0 or i > 255:
 			return False
 	return True
-
-
-

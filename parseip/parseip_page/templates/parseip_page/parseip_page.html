@@ -6,20 +6,20 @@
       <title>IP Form</title>
       <link rel="stylesheet" href="{% static 'css/parseip_page.css' %}">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src='{{ STATIC_URL }}js/parseip_page.js'></script>
+       <script src='{{ STATIC_URL }}js/parseip_page.js'></script>
   </head>
   <body>
     <h1>IP Address Translation</h1>
     <p>Please enter the IP addresses below you would like to reformat.</p>
 
-    <textarea></textarea>
+    <textarea id="input"></textarea>
     <button>Translate</button>
     <textarea id="returnedParse"></textarea>
 
   </body>
   <script>
     var handleClick = function() {
-      var input = $( 'input' );
+      var input = $( '#input' ).val();
       var request = $.post(url="/ajax/parse/", format="json", data=input);
       request.done(function(data) {
         console.log(data);
