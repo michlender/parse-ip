@@ -7,26 +7,29 @@ def parse_ip(myString, delimiter='tofrom'):
 		return symbol(myString, delimiter)
 
 def tofrom(myString):
-	# todo: check for empty string
-	myList = myString.split()
-	toReturn = ''
-	inRange = False
-	# find the Strings that represent IP addresses
-	for idx, iP in enumerate(myList):
-		# check if ip is in a range or independent
-		if is_from(iP):
-			inRange = True
-		elif is_to(iP):
-			toReturn += '-'
-			inRange = False
-		elif validateIP(iP):
-			if inRange:
-				toReturn += iP
-			else:
-				toReturn += iP + '\n'
-		elif validateIP(iP) == False:
-			return "The " + str(idx+1) + " word in the input is an invalid IP address."
-	return toReturn
+	if myString is None:
+		return "Please enter an IP address."
+	else:
+		myList = myString.split()
+		toReturn = ''
+		inRange = False
+		# find the Strings that represent IP addresses
+		for idx, iP in enumerate(myList):
+			# check if ip is in a range or independent
+			if is_from(iP):
+				inRange = True
+			elif is_to(iP):
+				toReturn += '-'
+				inRange = False
+			elif validateIP(iP):
+				if inRange:
+					toReturn += iP
+				else:
+					toReturn += iP + '\n'
+			elif validateIP(iP) == False:
+				return "The " + str(idx+1) + " word in the input is an invalid IP address."
+		return toReturn
+
 
 def symbol(myString, symbol):
 	myList = myString.split()

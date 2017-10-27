@@ -19,10 +19,11 @@
   </body>
   <script>
     var handleClick = function() {
-      //var input = $( '#input' ).val();
       var input = $( '#input' ).val();
-      //var request = $.post(url="/ajax/parse/", format="json", data=input);
-      var request = $.post(url="/ajax/parse/", format="json", data="input");
+      var getInput = function() {
+        return input;
+      }
+      var request = $.post( "/ajax/parse/", {data: input} );
       request.done(function(data) {
         console.log(data);
         $( '#returnedParse' ).val(data);
@@ -30,15 +31,6 @@
     }
 
     $( 'button' ).on('click', handleClick);
-    /*$( 'button' ).click(function() {
-      var input = $( '#input[type="text"]' ).val();
-      var request = $.post(url="/ajax/parse/", format="json", data="input");
-      request.done(function(data) {
-        console.log(data);
-        $( '#returnedParse' ).val(data);
-      })
-    });
-    */
 
 
   </script>
