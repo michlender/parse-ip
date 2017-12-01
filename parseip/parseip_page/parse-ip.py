@@ -30,7 +30,7 @@ def find_valid_ip(input):
     #    toReturn += ' '
 
 def is_in_range(input):
-    delimiter = re.compile('')
+    delimiter = re.compile('-|~|[Tt][Oo]')
 
 #def parse_ip(input):
 
