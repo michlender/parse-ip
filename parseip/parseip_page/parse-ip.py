@@ -2,7 +2,8 @@
 import re
 
 toReturn = ''
-address_catch_ipv4 = '(\d+\.*){4}'
+#address_catch_ipv4 = '((\d+\.*){4})'
+address_catch_ipv4 = '((\d{1,3}\.){3}\d{1,3})'
 
 
 def find_valid_ip(input):
@@ -10,7 +11,10 @@ def find_valid_ip(input):
     found_ips = re.findall(possible_ips, input)
 
     for ips in found_ips:
-        print(ips)
+        print(ips[0])
+        validate_ip(ips[0])
+
+
 
     #if found_ips != None:
         #toReturn += found_ips.group()
