@@ -12,7 +12,21 @@ def find_valid_ip(input):
 
     for ips in found_ips:
         print(ips[0])
-        validate_ip(ips[0])
+        if (validate_ip(ips[0])):
+            return True
+            #is_in_range
+
+def validate_ip(ipaddress):
+    segments = ipaddress.split('.')
+    if (len(segments) != 4):
+        return False
+    for segment in segments:
+        if int(segment) >= 256:
+            return False
+    return True
+
+def is_in_range(input):
+    delimiter = re.compile('-|~|[Tt][Oo]')
 
 
 
@@ -29,8 +43,7 @@ def find_valid_ip(input):
     #else:
     #    toReturn += ' '
 
-def is_in_range(input):
-    delimiter = re.compile('-|~|[Tt][Oo]')
+
 
 #def parse_ip(input):
 
