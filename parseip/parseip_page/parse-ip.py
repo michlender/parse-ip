@@ -1,5 +1,5 @@
 
-import re
+import re, ipaddress
 
 toReturn = ''
 #address_catch_ipv4 = '((\d+\.*){4})'
@@ -11,21 +11,22 @@ def find_valid_ip(input):
     found_ips = re.findall(possible_ips, input)
 
     for ips in found_ips:
-        print(ips[0])
+        print('Caught the address: ' + ips[0])
         if (validate_ip(ips[0])):
             return True
             #is_in_range
 
-def validate_ip(ipaddress):
-    segments = ipaddress.split('.')
-    if (len(segments) != 4):
+def validate_ip(address):
+    try:
+        ipaddress.ip_address(address)
+        print(address + ' is valid.')
+        return True
+    except ValueError:
+        print('Invalid IP address.')
         return False
-    for segment in segments:
-        if int(segment) >= 256:
-            return False
-    return True
 
 def is_in_range(input):
+    # regular expression
     delimiter = re.compile('-|~|[Tt][Oo]')
 
 
@@ -49,3 +50,4 @@ def is_in_range(input):
 
 find_valid_ip('from 127.0.0.1')
 find_valid_ip("127.0.0.9")
+find_valid_ip('999.999.999.999')
