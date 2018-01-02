@@ -1,30 +1,22 @@
 
 import re, ipaddress
 
-
-address_catch_ipv4 = '((?:\d{1,3}\.){3}\d{1,3})'
-delimiter = '(?:-|~|[Tt][Oo])'
+IPV4_PATTERN = r'((?:\d{1,3}\.){3}\d{1,3})'
+DELIMITER_PATTERN = r'(?:-|~|[Tt][Oo])'
 
 def find_valid_ip(input):
-    individual_ip = re.compile(address_catch_ipv4)
-    all_ips = re.findall(individual_ip, input)
-    ips_in_range = is_in_range(input)
+    all_ips = re.findall(IPV4_PATTERN, input)
+    ips_in_range = find_range_groups(input)
 
     for ip in all_ips:
-        if not validate_ip(ip):
+        if not is_valid_ip(ip):
             all_ips.remove(ip)
-
-        # for ranges in ips_in_range:
-        #     if not any(ip in range_ip for range_ip in ranges):
-        #         print('cool')
-        #     else:
-        #         print('uncool')
 
     toReturn = ''
     print(ips_in_range)
     for ip in all_ips:
-        for ranges in ips_in_range:
-            if ip in ranges:
+        for range_endpoints in ips_in_range:
+            if ip in range_endpoints:
                 range_index = all_ips.index(ip)
                 toReturn += all_ips.pop(range_index) + '-' + all_ips.pop(range_index)
         if all_ips:
@@ -33,17 +25,17 @@ def find_valid_ip(input):
     return toReturn
 
 
-def validate_ip(address):
+def is_valid_ip(address):
     try:
         ipaddress.IPv4Address(address)
         return True
     except ValueError:
         return False
 
-def is_in_range(input):
-    address_range = re.compile(address_catch_ipv4 + '\s*' + delimiter + '\s*' + address_catch_ipv4)
-    address_ranges = re.findall(address_range, input)
-    return address_ranges
+def find_range_groups(input):
+    address_range = IPV4_PATTERN + '\s*' + DELIMITER_PATTERN + '\s*' + IPV4_PATTERN
+    address_range_endpoints = re.findall(address_range, input)
+    return address_range_endpoints
 
 
 find_valid_ip("127.0.0.9")
