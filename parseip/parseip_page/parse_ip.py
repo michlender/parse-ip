@@ -7,22 +7,31 @@ DELIMITER_PATTERN = r'(?:-|~|[Tt][Oo])'
 def find_valid_ip(input):
     all_ips = re.findall(IPV4_PATTERN, input)
     ips_in_range = find_range_groups(input)
+    individual_ips = []
+    valid_ips = []
+    invalid_ips = []
 
     for ip in all_ips:
-        if not is_valid_ip(ip):
-            all_ips.remove(ip)
+        if is_valid_ip(ip):
+            valid_ips.append(ip)
+        else:
+            invalid_ips.append(ip)
 
-    toReturn = ''
-    print(ips_in_range)
-    for ip in all_ips:
+    for ip in valid_ips:
         for range_endpoints in ips_in_range:
-            if ip in range_endpoints:
-                range_index = all_ips.index(ip)
-                toReturn += all_ips.pop(range_index) + '-' + all_ips.pop(range_index)
-        if all_ips:
-            toReturn += ' ' + all_ips.pop(0)
-    print(toReturn)
-    return toReturn
+            if ip not in range_endpoints:
+                individual_ips.append(ip)
+
+    print('All IPs')
+    print(all_ips)
+    print('Individuals')
+    print(individual_ips)
+    print('Ranges')
+    print(ips_in_range)
+    print('Valid')
+    print(valid_ips)
+    print('Invalid')
+    print(invalid_ips)
 
 
 def is_valid_ip(address):
@@ -38,9 +47,9 @@ def find_range_groups(input):
     return address_range_endpoints
 
 
-find_valid_ip("127.0.0.9")
-find_valid_ip('999.999.999.999')
-find_valid_ip('127.0.0.3 999.999.999.999')
-find_valid_ip('from 127.0.0.1 to 127.0.0.2')
-find_valid_ip('from 127.0.0.1~ 127.0.0.2 127.0.0.3 999.999.999.999')
+# find_valid_ip("127.0.0.9")
+# find_valid_ip('999.999.999.999')
+# find_valid_ip('127.0.0.3 999.999.999.999')
+# find_valid_ip('from 127.0.0.1 to 127.0.0.2')
+# find_valid_ip('from 127.0.0.1~ 127.0.0.2 127.0.0.3 999.999.999.999')
 find_valid_ip('from 127.0.0.1~ 127.0.0.2 127.0.0.3 999.3.3.2-999.999.999.999')
