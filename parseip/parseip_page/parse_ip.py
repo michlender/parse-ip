@@ -18,9 +18,12 @@ def find_valid_ip(input):
             invalid_ips.append(ip)
 
     for ip in valid_ips:
+        is_individual = True
         for range_endpoints in ips_in_range:
-            if ip not in range_endpoints:
-                individual_ips.append(ip)
+            if ip in range_endpoints:
+                is_individual = False
+        if is_individual:
+            individual_ips.append(ip)
 
     print('All IPs')
     print(all_ips)
