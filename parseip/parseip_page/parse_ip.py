@@ -24,7 +24,7 @@ def find_valid_ip(input):
         if is_individual:
             individual_ips.append(ip)
 
-    # Validate individual IP addresses
+    # Build lists of valid and invalid individual IP addresses
     for ip in individual_ips:
         if is_valid_ip(ip):
             valid_ips.append(ip)
@@ -33,8 +33,7 @@ def find_valid_ip(input):
 
     # Build lists of valid and invalid ranges
     for range_endpoints in ips_in_range:
-        start = range_endpoints[0]
-        end = range_endpoints[1]
+        start, end = range_endpoints
         if not is_valid_ip(start) or not is_valid_ip(end):
             invalid_ranges.append(range_endpoints)
         else:
