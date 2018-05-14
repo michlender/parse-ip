@@ -5,6 +5,18 @@ from parse_ip import find_valid_ip
 
 class TestParseIP(unittest.TestCase):
 
+    def test_single_ip(self):
+        string = "127.0.0.1"
+        expect = "127.0.0.1"
+        got = find_valid_ip(string)
+        self.assertEqual(expect, got)
+
+    def test_single_invalid_ip(self):
+        string = "999.999.999.999"
+        expect = ""
+        got = find_valid_ip(string)
+        self.assertEqual(expect, got)
+
     def test_to_from(self):
         string = 'FROM 172.16.0.0  TO  172.31.255.255'
         expect = "172.16.0.0-172.31.255.255"
@@ -51,3 +63,10 @@ class TestParseIP(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+    find_valid_ip('999.999.999.999')
+    find_valid_ip('127.0.0.3 999.999.999.999')
+    find_valid_ip('from 127.0.0.1 to 127.0.0.2')
+    find_valid_ip('from 127.0.0.1~ 127.0.0.2 127.0.0.3 999.999.999.999')
+    find_valid_ip('from 127.0.0.1~ 127.0.0.2 127.0.0.3 999.3.3.2-999.999.999.999')

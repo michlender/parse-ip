@@ -39,22 +39,22 @@ def find_valid_ip(input):
         else:
             valid_ranges.append(range_endpoints)
 
-    print('All IPs')
-    print(all_ips)
-    print('Individuals')
-    print(individual_ips)
-
-    print('Valid')
-    print(valid_ips)
-    print('Invalid')
-    print(invalid_ips)
-
-    print('Ranges')
-    print(ips_in_range)
-    print('Valid Ranges')
-    print(valid_ranges)
-    print('Invalid Ranges')
-    print(invalid_ranges)
+    # print('All IPs')
+    # print(all_ips)
+    # print('Individuals')
+    # print(individual_ips)
+    #
+    # print('Valid')
+    # print(valid_ips)
+    # print('Invalid')
+    # print(invalid_ips)
+    #
+    # print('Ranges')
+    # print(ips_in_range)
+    # print('Valid Ranges')
+    # print(valid_ranges)
+    # print('Invalid Ranges')
+    # print(invalid_ranges)
 
 
 def is_valid_ip(address):
@@ -70,9 +70,8 @@ def find_range_groups(input):
     return address_range_endpoints
 
 
-# find_valid_ip("127.0.0.9")
-# find_valid_ip('999.999.999.999')
-# find_valid_ip('127.0.0.3 999.999.999.999')
-# find_valid_ip('from 127.0.0.1 to 127.0.0.2')
-# find_valid_ip('from 127.0.0.1~ 127.0.0.2 127.0.0.3 999.999.999.999')
+find_valid_ip('999.999.999.999')
+find_valid_ip('127.0.0.3 999.999.999.999')
+find_valid_ip('from 127.0.0.1 to 127.0.0.2')
+find_valid_ip('from 127.0.0.1~ 127.0.0.2 127.0.0.3 999.999.999.999')
 find_valid_ip('from 127.0.0.1~ 127.0.0.2 127.0.0.3 999.3.3.2-999.999.999.999')

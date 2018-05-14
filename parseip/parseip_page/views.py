@@ -9,12 +9,5 @@ def parseip_page(request):
 
 @csrf_exempt
 def parse(request):
-    # may have to convert request from json to dict? check
-    # process (don't worry about this yet)
-    # convert result back to json (this you will have to do, Django has machinery to handle returning json?)
-    print(request)
-    print(request.POST)
-    print(request.POST.get('data'))
     parsedIPs = parse_ip(request.POST.get('data'))
-    print(parsedIPs)
     return HttpResponse(parsedIPs)
